@@ -1,21 +1,32 @@
 .widgets-list {
-  width: 750px;
-  position: absolute;
-  left: 165px;
-  top: 580px;
-  border-radius: 10px;
-  z-index: 5;
+  position: relative;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, .8);
+  z-index: 2;
+
+  &__container {
+    width: 750px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+  }
 
   &__title {
     background-color: #5F7891;
     font-size: 35px;
+    font-weight: bold;
     color: white;
     padding: 25px;
     border-radius: 10px;
   }
 
   &__item {
-    background-color: #70D9A8;
+    background-color: #fff;
+    font-weight: bold;
+
+    box-shadow: 1px 24px 42px -8px rgba(0, 0, 0, 0.75);
     color: #5F7891;
     font-size: 30px;
     padding: 20px 25px;

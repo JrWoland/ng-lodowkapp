@@ -8,7 +8,7 @@
   justify-content: center;
   width: 1080px;
   height: 1920px;
-    margin: 0 auto;
+  margin: 0 auto;
 
   &__wrapper {
     width: 800px;
@@ -46,11 +46,6 @@
     width: 60px;
     height: 60px;
     font-size: 30px;
-    transition: .1s;
-
-    &:active {
-      transform: translateY(2px);
-    }
   }
 
   &__list-item {

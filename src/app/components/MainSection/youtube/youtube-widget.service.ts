@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class YoutubeWidgetService {
 
-  apiKey = 'AIzaSyDFaHaOE0Rp6yVAjB7EWqXj2LqMspgB-ww';
+  apiKey = 'AIzaSyCr2e8GYOOpmuWkLfK943UBDt1Y0Iq3CsA';
+  // AIzaSyDFaHaOE0Rp6yVAjB7EWqXj2LqMspgB-ww
   url: string;
   constructor(public httpClient: HttpClient) { }
 

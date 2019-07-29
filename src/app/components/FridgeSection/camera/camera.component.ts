@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Socket} from 'ngx-socket-io';
-import {Product} from '../../../interfaces/Models/product';
-import {ProductService} from '../../../services/product.service';
-import {v4 as uuid} from 'uuid';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Socket } from 'ngx-socket-io';
+import { Product } from '../../../interfaces/Models/product';
+import { ProductService } from '../../../services/product.service';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-camera',
@@ -40,12 +40,11 @@ export class CameraComponent implements OnInit, OnDestroy {
       // @ts-ignore
       const product: Product = {
         id: uuid(),
-        fridgePosition: {x: `${$event.layerX - 30}px`, y: `${$event.layerY - 30}px`},
+        fridgePosition: { x: `${$event.layerX - 30}px`, y: `${$event.layerY - 30}px` },
         needToBuy: false,
         dotColor: '#bbaeb2'
       };
       this.prService.insertItem(product);
-      // console.log(this.products);
     }
   }
 

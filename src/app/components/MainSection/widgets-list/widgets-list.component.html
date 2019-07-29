@@ -1,9 +1,11 @@
-<div class="widgets-list">
-  <p class="widgets-list__title">Available widgets:</p>
-  <ul class="widgets-list__list" *ngIf="!isSmallWidget">
-    <li class="widgets-list__item" *ngFor= "let widget of largeWidgets" (click)="chooseWidget()">{{widget}}</li>
-  </ul>
-  <ul class="widgets-list__list" *ngIf="isSmallWidget">
-    <li class="widgets-list__item" *ngFor= "let widget of smallWidgets" (click)="chooseWidget()">{{widget}}</li>
-  </ul>
+<div class="widgets-list" [@Show]="'state'">
+  <div class="widgets-list__container">
+    <p class="widgets-list__title">Available widgets:</p>
+    <ul class="widgets-list__list" *ngIf="!isSmallWidget">
+      <li class="widgets-list__item" *ngFor="let widget of largeWidgets" (click)="chooseWidget()">{{widget}}</li>
+    </ul>
+    <ul class="widgets-list__list" *ngIf="isSmallWidget">
+      <li class="widgets-list__item" *ngFor="let widget of smallWidgets" (click)="chooseWidget()">{{widget}}</li>
+    </ul>
+  </div>
 </div>

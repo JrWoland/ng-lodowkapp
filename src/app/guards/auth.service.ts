@@ -28,7 +28,6 @@ export class AuthService {
       isAnyoneLogged = true;
     } else {
       if (this.user.getLoggedUser()[0] === undefined) {
-        console.log('nikt nie zalogowany');
         this.goToPageNotFound();
         isAnyoneLogged = false;
         return;

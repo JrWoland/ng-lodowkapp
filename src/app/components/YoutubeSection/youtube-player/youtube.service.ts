@@ -10,8 +10,8 @@ export class YoutubeService {
   private youtubeUrl = 'https://www.googleapis.com/youtube/v3';
   private nextPageToken = '';
 
-  apiKey = 'AIzaSyDFaHaOE0Rp6yVAjB7EWqXj2LqMspgB-ww';
-
+  apiKey = 'AIzaSyCr2e8GYOOpmuWkLfK943UBDt1Y0Iq3CsA';
+  // AIzaSyDFaHaOE0Rp6yVAjB7EWqXj2LqMspgB-ww
 
   constructor(private httpClient: HttpClient) { }
 

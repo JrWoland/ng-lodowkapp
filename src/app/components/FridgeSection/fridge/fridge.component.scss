@@ -1,16 +1,22 @@
-.fridge-wrapper {
+.background {
   width: 1080px;
-  height: 1920px;
+  min-height: 1920px;
   margin: 0 auto;
   background-image: url("~src/assets/fridgeBackground.png");
   background-attachment: fixed;
-  display: flex;
-  align-items: center;
   background-size: 270%;
   background-position: 76% 0%;
+}
+
+.fridge-wrapper {
+  width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
   padding: 81px 100px 120px 100px;
+  position: relative;
 
   &__header {
     font-size: 46px;
@@ -28,26 +34,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-
 
   &__back {
     position: absolute;
-    top: -35px;
-    left: 5px;
+    top: 0;
+    left: 30px;
     background-color: #00C3FF;
     border: none;
     border-radius: 10px;
     outline: none;
     color: #fff;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     font-size: 30px;
-    transition: .1s;
-
-    &:active {
-      transform: translateY(2px);
-    }
+    margin: 20px auto;
   }
 
   &__btn {
@@ -58,11 +58,8 @@
     border: 1px solid #00C3FF;
     font-size: 24px;
     line-height: 33px;
-    font-family: "Open Sans", sans-serif;
-    font-weight: normal;
     text-align: center;
     outline: none;
-
 
     &:first-child {
       border-top-left-radius: 10px;

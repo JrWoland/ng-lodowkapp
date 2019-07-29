@@ -1,12 +1,15 @@
 <div class="wrapper">
+  <a class="wrapper__button" [routerLink]="['/main']">&lt;</a>
   <div class="canvas-wrapper">
-    <canvas #myCanvas id="myCanvas" class="canvas" width="840px" height="760px" (touchstart)="mouseDown($event)" (touchend)="mouseUp($event)" (touchmove)="draw($event)"></canvas>
+    <canvas #myCanvas id="myCanvas" class="canvas" width="840px" height="760px" (touchstart)="mouseDown($event)"
+      (touchend)="mouseUp($event)" (touchmove)="draw($event)"></canvas>
   </div>
 
   <div class="buttons-wrapper">
     <button class="button" (click)="pencilMode()"><img class="button__img" src="../../../assets/pencil.svg"></button>
     <button class="button" (click)="rubberMode()"><img class="button__img" src="../../../assets/rubber.svg"></button>
     <button class="button" (click)="clearCanvas()"><img class="button__img" src="../../../assets/bin2.svg"></button>
-    <button class="button" (click)="saveCanvas()" routerLink="/main"><img class="button__img" src="../../../assets/save.svg"></button>
+    <button class="button" (click)="saveCanvas()" routerLink="/main"><img class="button__img"
+        src="../../../assets/save.svg"></button>
   </div>
 </div>

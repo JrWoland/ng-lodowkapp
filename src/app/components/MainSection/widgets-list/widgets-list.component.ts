@@ -1,9 +1,11 @@
-import { Component, EventEmitter, OnInit, Output, Input} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { showWidget } from 'src/app/animations';
 
 @Component({
   selector: 'app-widgets-list',
   templateUrl: './widgets-list.component.html',
-  styleUrls: ['./widgets-list.component.scss']
+  styleUrls: ['./widgets-list.component.scss'],
+  animations: [showWidget]
 })
 export class WidgetsListComponent implements OnInit {
 
@@ -12,7 +14,7 @@ export class WidgetsListComponent implements OnInit {
   @Input() smallWidgets: Array<string>;
 
   @Output() emitCloseList = new EventEmitter();
- 
+
 
   constructor() { }
 

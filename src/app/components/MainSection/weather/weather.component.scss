@@ -27,43 +27,28 @@
   }
 }
 
+
 .loading {
-  height: 100%;
-  text-align: center;
-  line-height: 190px;
-  font-size: 40px;
-  color: #5F7891;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border: 3px solid rgba(95, 120, 145, .2);
+  border-radius: 50%;
+  border-top-color: #5F7891;
+  animation: spin 1s ease-in-out infinite;
+  position: absolute;
+  top: 70px;
+  left: 160px;
+}
 
-  &__dot {
-    font-size: 60px;
-  }
-
-  &__dot:nth-of-type(1) {
-    animation: jump 2s infinite;
-  }
-
-  &__dot:nth-of-type(2) {
-    animation: jump 2s .5s infinite;
-
-  }
-
-  &__dot:nth-of-type(3) {
-    animation: jump 2s 1s infinite;
-
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
-@keyframes jump {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-
+@-webkit-keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }

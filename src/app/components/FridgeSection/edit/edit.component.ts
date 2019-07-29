@@ -42,9 +42,7 @@ export class EditComponent implements OnInit {
 
   emitDateAndName(formValue: FormGroup) {
     if (formValue.valid) {
-      // console.log(formValue.value);
       const data: NameDate = { ...formValue.value };
-      // console.log(data);
       this.nameAndDateEmitter.emit(data);
       this.nameDate.reset({});
     }

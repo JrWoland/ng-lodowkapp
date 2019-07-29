@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { NoteService } from '../../../services/note.service';
-import { UserService } from '../../../services/user.service';
-import { PushNotificationService } from '../../../services/push-notification.service';
-import { deleteItem } from '../../../animations'
-
+import {Component, DoCheck, OnInit} from '@angular/core';
+import {NoteService} from '../../../services/note.service';
+import {UserService} from '../../../services/user.service';
+import {PushNotificationService} from '../../../services/push-notification.service';
+import {deleteItem} from '../../../animations';
 
 
 @Component({
@@ -14,9 +13,10 @@ import { deleteItem } from '../../../animations'
     deleteItem
   ]
 })
-export class NotesListComponent implements OnInit {
+export class NotesListComponent implements OnInit, DoCheck {
 
-  constructor(private noteService: NoteService, private userService: UserService, private notifyService: PushNotificationService) { }
+  constructor(private noteService: NoteService, private userService: UserService, private notifyService: PushNotificationService) {
+  }
 
   notes: any;
   userId: string;
@@ -31,11 +31,11 @@ export class NotesListComponent implements OnInit {
   }
 
   getNotes() {
-    this.userId = this.userService.getLoggedUser()[0].id
+    this.userId = this.userService.getLoggedUser()[0].id;
 
-    const notSortedNotes = this.noteService.getItemsByUserId(this.userId)
+    const notSortedNotes = this.noteService.getItemsByUserId(this.userId);
 
-    const sortedNotes = notSortedNotes.sort(function (firstNote, secondNote) {
+    const sortedNotes = notSortedNotes.sort((firstNote, secondNote) => {
       return firstNote.date > secondNote.date ? -1 : firstNote.date < secondNote.date ? 1 : 0;
     });
     this.notes = sortedNotes;
