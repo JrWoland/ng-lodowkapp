@@ -3,6 +3,7 @@ import { User } from 'src/app/interfaces/Models/user';
 import { UserService } from 'src/app/services/user.service';
 import { v4 as uuid } from 'uuid';
 import { fadeIn, ShowOpacity } from 'src/app/animations';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,32 +26,53 @@ export class RegisterComponent implements OnInit {
   private personType;
   private btnSwitch: number[] = [0];
 
+  btnPrevText = 'Back';
   btnNextText = 'Next';
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   setButtonStatus(step: number) {
-    if (this.btnSwitch.includes(step)) {
-      this.btnIsDisabled = false;
-      if (this.registerStep === 1 && this.userNamee.length === 0) {
-        this.btnIsDisabled = true;
-      }
-    } else if (this.registerStep === 4 && this.userPIN1.length === 4 && (this.userPIN1 === this.userPIN2)) {
-      this.btnNextText = 'Confirm and add family member';
-      this.btnIsDisabled = false;
-    } else if (this.registerStep === 4 && (this.userPIN1.length < 4 || this.userPIN2.length < 4)) {
-      this.btnIsDisabled = true;
-      this.btnNextText = 'Please insert PIN';
-    } else if (this.userPIN2.length === 4 && this.userPIN1 !== this.userPIN2) {
-      this.btnIsDisabled = true;
-      this.btnNextText = 'PIN codes are not equal';
-    } else {
-      this.btnIsDisabled = true;
+    switch (step) {
+      case -1:
+        this.router.navigate(['/start']);
+        break;
+      case 0:
+        this.personType !== undefined ? this.btnIsDisabled = false : this.btnIsDisabled = true;
+        break;
+      case 1:
+        this.userNamee.length !== 0 ? this.btnIsDisabled = false : this.btnIsDisabled = true;
+        break;
+      case 2:
+        this.userAvatar !== undefined ? this.btnIsDisabled = false : this.btnIsDisabled = true;
+        break;
+      case 3:
+        this.userColor !== undefined ? this.btnIsDisabled = false : this.btnIsDisabled = true;
+        break;
+      case 4:
+        if ((this.userPIN1 === this.userPIN2) && (this.userPIN1.length === 4)) {
+          this.btnIsDisabled = false;
+          this.btnNextText = 'Confirm and add family member';
+        } else {
+          this.btnIsDisabled = true;
+          this.btnNextText = 'PIN codes are not equal';
+        }
+        break;
+      case 5:
+        let agregatedInfo = {
+          id: uuid(),
+          type: this.personType,
+          name: this.userNamee,
+          avatar: this.userAvatar,
+          color: this.userColor,
+          pin: this.userPIN1,
+          isLogged: false
+        };
+        this.registerInfo(agregatedInfo);
+        this.router.navigate(['/start'])
+        break;
     }
   }
 
@@ -71,35 +93,18 @@ export class RegisterComponent implements OnInit {
 
   onClickPrev() {
     this.registerStep--;
+    this.btnNextText = 'Next';
     this.setButtonStatus(this.registerStep);
-    if (this.registerStep < 0) {
-      this.registerStep = 0; //out to /start path
-      return;
-    } else if (this.registerStep === 3) {
-      this.btnNextText = 'Next';
-    }
   }
 
   onClickNext() {
     this.registerStep++;
     this.setButtonStatus(this.registerStep);
-    if (this.registerStep === 5) {
-      let agregatedInfo = {
-        id: uuid(),
-        type: this.personType,
-        name: this.userNamee,
-        avatar: this.userAvatar,
-        color: this.userColor,
-        pin: this.userPIN1,
-        isLogged: false
-      };
-      this.registerInfo(agregatedInfo);
-    }
   }
 
   getUserType(userType: string) {
     this.personType = userType;
-    this.activateBtn();
+    this.setButtonStatus(this.registerStep);
   }
 
   getName(user: string) {
